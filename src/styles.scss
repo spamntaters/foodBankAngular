@@ -6,7 +6,9 @@
 $theme-colors: (
   primary: #00703c,
   danger: #be7c4d,
-  light: #fff6dc
+  light: #fff6dc,
+  warning: #f0cb00,
+  secondary:#c3d7a4
 );
 /* finally, import Bootstrap */
 @import "~bootstrap/scss/bootstrap";
