@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import '~bootstrap/scss/_mixins';
+// All but danger are pulled from the Universities Style guides...
+$theme-colors: (
+  primary: #00703c,
+  danger: #be7c4d,
+  light: #fff6dc
+);
+/* finally, import Bootstrap */
+@import "~bootstrap/scss/bootstrap";
+
+body{
+  background-color: theme-color(light) !important;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-item .nav-link,
+.navbar-dark .nav-item.active .nav-link,
+.navbar-dark .nav-item:focus .nav-link,{
+  color: theme-color(light);
+}
