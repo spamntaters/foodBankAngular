@@ -2,15 +2,18 @@
     "items":[
         {
             "id": 1,
-            "name": "ramen noodles"
+            "name": "ramen noodles",
+            "quantity": 200
         },
         {
             "id": 2,
-            "name": "chili with beans"
+            "name": "chili with beans",
+            "quantity": 50
         },
         {
             "id": 3,
-            "name": "chicken noodle soup"
+            "name": "chicken noodle soup",
+            "quantity": 50
         }
     ],
     "profile": {
