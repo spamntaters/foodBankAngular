@@ -4,10 +4,11 @@
 @import '~bootstrap/scss/_mixins';
 // All but danger are pulled from the Universities Style guides...
 $theme-colors: (
-  primary: #00703c,
+  primary: #046A38,
   danger: #be7c4d,
   light: #fff6dc,
-  warning: #f0cb00,
+  dark: #27251F,
+  warning: #B9975B,
   secondary:#c3d7a4
 );
 /* finally, import Bootstrap */
@@ -17,9 +18,9 @@ body{
   background-color: theme-color(light) !important;
 }
 
-.navbar-dark .navbar-brand,
-.navbar-dark .nav-item .nav-link,
-.navbar-dark .nav-item.active .nav-link,
-.navbar-dark .nav-item:focus .nav-link,{
+.navbar-light .navbar-brand,
+.navbar-light .nav-item .nav-link,
+.navbar-light .nav-item.active .nav-link,
+.navbar-light .nav-item:focus .nav-link,{
   color: theme-color(light);
 }
