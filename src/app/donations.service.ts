@@ -9,7 +9,7 @@ export class DonationsService {
 
   constructor(private http: HttpClient) { }
 
-  apiURL = 'http://localhost:3000';
+  apiURL = 'http://localhost:8080';
 
 
   getAllDonations() {
