@@ -1,1 +1,11 @@
 <p>donation-list works!</p>
+<div class="row">
+    <div class="col-md-4" *ngFor="let donation of donations">
+            <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{donation.name}}</h5>
+                        <h6 class="card-subtitle">Quantity: {{donation.quantity}}</h6>
+                    </div>
+                </div>
+    </div>
+</div>
