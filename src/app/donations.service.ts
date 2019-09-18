@@ -13,6 +13,10 @@ export class DonationsService {
 
 
   getAllDonations() {
-    return this.http.get(this.apiURL + '/donations');
-  } 
+    return this.http.get(`${this.apiURL}/donations`);
+  }
+  
+  getDonation(id: Number){
+    return this.http.get(`${this.apiURL}/donation/${id}`);
+  }
 }
