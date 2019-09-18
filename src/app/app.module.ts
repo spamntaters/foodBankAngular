@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DonationListComponent } from './donation-list/donation-list.component';
 import { DonationsService } from './donations.service';
+import { DonationDetailComponent } from './donation-detail/donation-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DonationListComponent
+    DonationListComponent,
+    DonationDetailComponent
   ],
   imports: [
     BrowserModule,
