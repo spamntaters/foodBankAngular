@@ -1,18 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DonationListComponent } from './donation-list/donation-list.component';
+import { DonationsService } from './donations.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DonationListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DonationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

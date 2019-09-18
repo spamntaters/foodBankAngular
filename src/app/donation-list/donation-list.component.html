@@ -1,0 +1,16 @@
+<h1 class="jumbotron text-center bg-secondary">Donations</h1>
+<div class="card-deck">
+    <div class="card text-center bg-secondary" *ngFor="let donation of donations">
+        <div class="card-body">
+            <!-- TODO: Make link to donation-detail -->
+            <h5 class="card-title">Donation {{donation.donationId}}</h5>
+            <h6 class="card-subtitle">{{ donation.dateReceived }}</h6>
+            <ul class="list-group-flush">
+                <li class="list-group-item bg-secondary" *ngFor="let item of donation.itemsDonated">
+                    <!-- TODO: Change Bg for hover (active) -->
+                    {{ item.name }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
