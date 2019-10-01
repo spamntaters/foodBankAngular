@@ -1,1 +1,11 @@
-<p>inventory-list works!</p>
+<h1 class="jumbotron text-center bg-secondary">Inventory List</h1>
+<div class="card-deck">
+    <div class="card text-center bg-secondary" *ngFor="let inventory of inventorys">
+        <div class="card-body">
+            
+            <h1>{{inventory.foodItemName}}</h1>
+            <h2>{{inventory.foodItemQuantity}}</h2>
+            
+        </div>
+    </div>
+</div>

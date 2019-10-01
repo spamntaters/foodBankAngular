@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { DonationListComponent } from './donation-list/donation-list.component';
 import { DonationsService } from './donations.service';
 import { InventoryListComponent } from './inventory-list/inventory-list.component';
+import { InventoryListService } from './inventory-list.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { InventoryListComponent } from './inventory-list/inventory-list.componen
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [DonationsService],
+  providers: [DonationsService, InventoryListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

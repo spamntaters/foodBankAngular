@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InventoryItem } from '../models/inventory-item.model';
+import { InventoryListService } from '../inventory-list.service';
 
 @Component({
   selector: 'app-inventory-list',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inventory-list.component.scss']
 })
 export class InventoryListComponent implements OnInit {
+  inventorys: InventoryItem[];
 
-  constructor() { }
+  constructor(private inventoryService: InventoryListService) { }
 
-  ngOnInit() {
+  ngOnInit(){
+    this.inventoryService.getAllInventorys()
+    .subscribe((data: InventoryItem[]) =>{
+      this.inventorys = data;
+    });
+    console.log(`Inventorys: ${this.inventorys}`);
   }
-
 }
