@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { InventoryItem } from '../models/inventory-item.model';
 import { InventoryListService } from '../inventory-list.service';
+=======
+>>>>>>> d7e69e944f9230069c27a6114df7923da66e3402
 
 @Component({
   selector: 'app-inventory-list',
@@ -8,6 +11,7 @@ import { InventoryListService } from '../inventory-list.service';
   styleUrls: ['./inventory-list.component.scss']
 })
 export class InventoryListComponent implements OnInit {
+<<<<<<< HEAD
   inventorys: InventoryItem[];
 
   constructor(private inventoryService: InventoryListService) { }
@@ -19,4 +23,12 @@ export class InventoryListComponent implements OnInit {
     });
     console.log(`Inventorys: ${this.inventorys}`);
   }
+=======
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+>>>>>>> d7e69e944f9230069c27a6114df7923da66e3402
 }
