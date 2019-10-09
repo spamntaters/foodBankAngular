@@ -5,7 +5,7 @@
             <!-- TODO: Make link to donation-detail -->
             <h5 class="card-title">Donation {{donation.donationId}}</h5>
             <h6 class="card-subtitle">{{ donation.dateReceived }}</h6>
-            <ul class="list-group-flush">
+            <ul class="list-group-flush m-auto">
                 <li class="list-group-item bg-secondary" *ngFor="let item of donation.itemsDonated">
                     <!-- TODO: Change Bg for hover (active) -->
                     {{ item.name }}
