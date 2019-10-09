@@ -5,13 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DonationListComponent } from './donation-list/donation-list.component';
+import { DonationListComponent } from './donations/donation-list/donation-list.component';
 import { DonationsService } from './donations.service';
+import { DonationsComponent } from './donations/donations.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DonationListComponent
+    DonationListComponent,
+    DonationsComponent
   ],
   imports: [
     BrowserModule,
