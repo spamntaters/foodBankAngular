@@ -20,4 +20,11 @@ export class DonationListComponent implements OnInit {
     console.log(`Donations: ${this.donations}`);
   }
 
+  onSelected(id: Number){
+    this.donationsService.getDonation(id)
+    .subscribe((data: Donation) => {
+      this.donationsService.selectDonation(data);
+    });
+  }
+
 }

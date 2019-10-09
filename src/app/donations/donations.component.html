@@ -5,6 +5,6 @@
     </div>
     <div class="col-md-6">
         <!-- TODO: Add Donation-detail component -->
-        <app-donation-detail></app-donation-detail>
+        <app-donation-detail *ngIf="selectedDonation" [donation]="selectedDonation"></app-donation-detail>
     </div>
 </div>
