@@ -17,6 +17,6 @@ export class DonationsService {
   }
   
   getDonation(id: Number){
-    return this.http.get(`${this.apiURL}/donation/${id}`);
+    return this.http.get(`${this.apiURL}/donations?donationId=${id}`);
   }
 }

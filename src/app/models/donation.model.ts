@@ -1,9 +1,11 @@
 import { Item } from './item.model';
 
 export class Donation {
-    // dateRecieved : String;
-    // itemsList : Item[];
-    id: Number;
-    name: String;
-    quantity: Number;
+    donationId: Number;
+    dateRecieved: String;
+    itemsDonated: Item[];
+    donorName: String;
+    donorEmail: String;
+    donorAddress: String;
+    donationWeight: Number;
 }
