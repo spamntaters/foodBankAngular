@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { DonationListComponent } from './donations/donation-list/donation-list.component';
 import { DonationsService } from './donations.service';
 import { DonationsComponent } from './donations/donations.component';
+import { DonationDetailComponent } from './donations/donation-detail/donation-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DonationListComponent,
-    DonationsComponent
+    DonationsComponent,
+    DonationDetailComponent
   ],
   imports: [
     BrowserModule,
