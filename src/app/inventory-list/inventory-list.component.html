@@ -1,11 +1,29 @@
 <h1 class="jumbotron text-center bg-secondary">Inventory List</h1>
-<div class="card-deck">
-    <div class="card text-center bg-secondary" *ngFor="let inventory of inventorys">
-        <div class="card-body">
-            
-            <h1>{{inventory.foodItemName}}</h1>
-            <h2>{{inventory.foodItemQuantity}}</h2>
-            
+<!-- <div class="table-responsive">
+    <div class="table text-center bg-secondary" *ngFor="let inventory of inventorys">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <h1>{{inventory.foodItemName}}</h1>
+                    <h2>{{inventory.foodItemQuantity}}</h2>
+                </thead>
+            </table>
         </div>
     </div>
-</div>
+</div> -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Item Name</th>
+            <th scope="col">Item Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <th>
+            <tr *ngFor="let inventory of inventorys">{{inventory.foodItemName}}</tr>
+        </th>
+        <th>
+            <tr *ngFor="let inventory of inventorys">{{inventory.foodItemQuantity}}</tr>
+        </th>
+    </tbody>
+</table>
