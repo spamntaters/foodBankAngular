@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Donation } from '../models/donation.model'
+import { Donation } from '../../models/donation.model'
 import { DonationsService } from '../donations.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { DonationsService } from '../donations.service';
 })
 export class DonationListComponent implements OnInit {
   donations: Donation[];
+  filters: boolean = false;
 
   constructor(private donationsService: DonationsService) { }
 
@@ -18,6 +19,17 @@ export class DonationListComponent implements OnInit {
       this.donations = data;
     });
     console.log(`Donations: ${this.donations}`);
+  }
+
+  onSelected(id: Number){
+    this.donationsService.getDonation(id)
+    .subscribe((data: Donation) => {
+      this.donationsService.selectDonation(data);
+    });
+  }
+
+  toggleFilters(){
+    this.filters = !this.filters;
   }
 
 }
