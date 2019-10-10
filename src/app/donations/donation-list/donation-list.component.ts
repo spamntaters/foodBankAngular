@@ -9,6 +9,7 @@ import { DonationsService } from '../donations.service';
 })
 export class DonationListComponent implements OnInit {
   donations: Donation[];
+  filters: boolean = false;
 
   constructor(private donationsService: DonationsService) { }
 
@@ -25,6 +26,10 @@ export class DonationListComponent implements OnInit {
     .subscribe((data: Donation) => {
       this.donationsService.selectDonation(data);
     });
+  }
+
+  toggleFilters(){
+    this.filters = !this.filters;
   }
 
 }
