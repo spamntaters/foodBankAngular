@@ -21,6 +21,10 @@ body{
 .navbar-light .navbar-brand,
 .navbar-light .nav-item .nav-link,
 .navbar-light .nav-item.active .nav-link,
-.navbar-light .nav-item:focus .nav-link,{
+.navbar-light .nav-item:focus .nav-link{
   color: theme-color(light);
+}
+
+.navbar-light  .navbar-nav .nav-item .nav-link.active {
+  color: theme-color(dark);
 }
