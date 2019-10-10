@@ -3,4 +3,5 @@ export class Item {
     itemId: Number;
     description: String;
     perishable: Boolean;
+    itemCount: Number;
 }
