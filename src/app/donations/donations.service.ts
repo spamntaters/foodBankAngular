@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Donation } from '../models/donation.model';
 
 
@@ -22,7 +22,7 @@ export class DonationsService {
   }
 
   getAllDonations() {
-    return this.http.get(`${this.apiURL}/donations`);
+    return this.http.get(`${this.apiURL}/donations`) as Observable<Donation[]>;
   }
   
   getDonation(id: Number){

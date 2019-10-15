@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Donation } from '../../models/donation.model'
 import { DonationsService } from '../donations.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-donation-list',
@@ -8,21 +9,23 @@ import { DonationsService } from '../donations.service';
   styleUrls: ['./donation-list.component.scss']
 })
 export class DonationListComponent implements OnInit {
-  donations: Donation[];
+  donations: Observable<Donation[]>;
+  selectorSub: Subscription;
   filters: boolean = false;
+  numCol: Number = 3;
 
   constructor(private donationsService: DonationsService) { }
 
   ngOnInit() {
-     this.donationsService.getAllDonations()
-    .subscribe((data: Donation[]) =>{
-      this.donations = data;
-    });
-    console.log(`Donations: ${this.donations}`);
+    this.donations = this.donationsService.getAllDonations();
+  }
+
+  ngOnDestroy() {
+    this.selectorSub.unsubscribe();
   }
 
   onSelected(id: Number){
-    this.donationsService.getDonation(id)
+    this.selectorSub = this.donationsService.getDonation(id)
     .subscribe((data: Donation) => {
       this.donationsService.selectDonation(data);
     });
