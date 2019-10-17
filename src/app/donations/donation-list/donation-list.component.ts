@@ -21,7 +21,9 @@ export class DonationListComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.selectorSub.unsubscribe();
+    if(this.selectorSub){
+      this.selectorSub.unsubscribe();
+    }
   }
 
   onSelected(id: Number){
