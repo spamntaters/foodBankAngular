@@ -14,7 +14,7 @@ export class InventoryListService {
     return this.http.get(`${this.apiURL}/inventory`);
   }
 
-  getItemId() {
+  getItemId(id: Number) {
     return this.http.get(`${this.apiURL}/inventory?itemId`)
   }  
   
