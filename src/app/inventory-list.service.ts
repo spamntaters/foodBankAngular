@@ -13,7 +13,10 @@ export class InventoryListService {
   getAllInventorys() {
     return this.http.get(`${this.apiURL}/inventory`);
   }
-  
+
+  getItemId() {
+    return this.http.get(`${this.apiURL}/inventory?itemId`)
+  }  
   
 
 }
