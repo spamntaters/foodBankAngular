@@ -11,6 +11,7 @@ import { DonationListComponent } from './donations/donation-list/donation-list.c
 import { DonationsService } from './donations/donations.service';
 import { DonationsComponent } from './donations/donations.component';
 import { DonationDetailComponent } from './donations/donation-detail/donation-detail.component';
+import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [DonationsService, InventoryListService],
