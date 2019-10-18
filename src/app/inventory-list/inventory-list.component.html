@@ -11,6 +11,13 @@
         </div>
     </div>
 </div> -->
+<div>
+    <form>
+        <input type="text" [(ngModel)]="nameQueryTerm" name="queryString">
+        <button type="submit" (click)="queryByName($event)">Submit</button>
+    </form>
+</div>
+
 <table class="table">
     <thead class="thead-dark">
         <tr>

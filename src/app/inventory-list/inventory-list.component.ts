@@ -9,6 +9,7 @@ import { InventoryListService } from '../inventory-list.service';
 })
 export class InventoryListComponent implements OnInit {
   inventorys: InventoryItem[];
+  nameQueryTerm: String;
 
   constructor(private inventoryService: InventoryListService) { }
 
@@ -18,5 +19,24 @@ export class InventoryListComponent implements OnInit {
       this.inventorys = data;
     });
     console.log(`Inventorys: ${this.inventorys}`);
+  }
+
+  queryByName = ($event) => {
+    $event.preventDefault();
+    if (this.nameQueryTerm == '') {
+      this.inventoryService.getAllInventorys()
+        .subscribe((data: InventoryItem[]) =>{
+        this.inventorys = data;
+      });
+      return
+    }
+    
+    let list = [];
+    this.inventoryService.getInventoryByName(this.nameQueryTerm)
+      .subscribe((data: InventoryItem[]) => {
+        list.push(data);
+        this.inventorys = list;
+      });
+
   }
 }
