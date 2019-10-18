@@ -8,15 +8,14 @@ export class InventoryListService {
 
   constructor(private http: HttpClient) { }
 
-  apiURL = 'http://localhost:8080'
+  apiURL = 'https://jamil-niner-foodpantry-api.herokuapp.com'
 
   getAllInventorys() {
     return this.http.get(`${this.apiURL}/inventory`);
   }
 
-  getItemId(id: Number) {
-    return this.http.get(`${this.apiURL}/inventory?itemId`)
-  }  
-  
+  getInventoryByName = (name: String) => {
+    return this.http.get(`${this.apiURL}/inventory?itemName=${name}`)
+  }
 
 }

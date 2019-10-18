@@ -11,6 +11,7 @@ import { DonationListComponent } from './donations/donation-list/donation-list.c
 import { DonationsService } from './donations/donations.service';
 import { DonationsComponent } from './donations/donations.component';
 import { DonationDetailComponent } from './donations/donation-detail/donation-detail.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DonationDetailComponent } from './donations/donation-detail/donation-de
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [DonationsService, InventoryListService],
   bootstrap: [AppComponent]
