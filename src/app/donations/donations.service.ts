@@ -29,8 +29,8 @@ export class DonationsService {
     return this.http.get(`${this.apiURL}/donations?donationId=${id}`);
   }
 
-  getDonationsByDate(fromDate: Date, toDate: Date){
-    return this.http.get(`${this.apiURL}/donations?fromDate=${fromDate.toDateString()}&toDate=${toDate.toDateString()}`);
+  getDonationsByDate(fromDate: String, toDate: String){
+    return this.http.get(`${this.apiURL}/donations?fromDate=${fromDate}&toDate=${toDate}`);
   }
 
   getDonationsByWeight(minWeight: Number, maxWeight: Number){
