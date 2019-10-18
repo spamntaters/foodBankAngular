@@ -9,21 +9,71 @@
         </div>
     </div>
 </div>
-<div class="text-center" *ngIf="filters">
-    Filters
+<div class="text-center mb-1" *ngIf="filters">
+    <form [formGroup]="queryForm">
+        Value: {{ queryForm.value | json}}
+        <select formControlName="queryType" class="form-control mb-3">
+            <option [ngValue]="null" selected>Select query type...</option>
+            <option value="date">Date</option>
+            <option value="weight">Weight</option>
+            <option value="donor">Donor Name</option>
+        </select>
+        <div *ngIf="queryForm.get('queryType').value == 'date'" class="row mb-3">
+            <div class="col-lg-3">
+                <label>From Date:</label>
+            </div>
+            <div class="col-lg-3">
+                    <input type="date" class="form-control" formControlName="fromDate">
+            </div>
+            <div class="col-lg-3">
+                <label>To Date:</label>
+            </div>
+            <div class="col-lg-3">
+                    <input type="date" class="form-control" formControlName="toDate">
+            </div>
+        </div>
+
+        <div *ngIf="queryForm.get('queryType').value == 'weight'" class="row mb-3">
+                <div class="col-lg-3">
+                    <label>Min Weight:</label>
+                </div>
+                <div class="col-lg-3">
+                        <input type="number" class="form-control" formControlName="minWeight">
+                </div>
+                <div class="col-lg-3">
+                    <label>Max Weight:</label>
+                </div>
+                <div class="col-lg-3">
+                        <input type="number" class="form-control" formControlName="maxWeight">
+                </div>
+            </div>
+
+            <div *ngIf="queryForm.get('queryType').value == 'donor'" class="row mb-3">
+                <div class="col-md-6">
+                    <label>Donor Name:</label>
+                </div>
+                <div class="col-md-6">
+                        <input type="text" class="form-control" formControlName="donorName">
+                </div>
+            </div>
+            <button class="btn btn-warning" *ngIf="queryForm.get('queryType').value" (click)="processQuery()">Search</button>
+    </form>
 </div>
 <div class="card-deck">
-    <div class="card text-center bg-secondary" *ngFor="let donation of donations" (click)="onSelected(donation.donationId)">
-        <div class="card-body">
-            <!-- TODO: Make link to donation-detail -->
-            <h5 class="card-title">Donation {{donation.donationId}}</h5>
-            <h6 class="card-subtitle">{{ donation.dateReceived }}</h6>
-            <ul class="list-group-flush m-auto">
-                <li class="list-group-item bg-secondary" *ngFor="let item of donation.itemsDonated">
-                    <!-- TODO: Change Bg for hover (active) -->
-                    {{ item.name }}
-                </li>
-            </ul>
+    <ng-container *ngFor="let donation of donations | async; let i = index">
+        <div class="card text-center bg-secondary" (click)="onSelected(donation.donationId)">
+            <div class="card-body">
+                <!-- TODO: Make link to donation-detail -->
+                <h5 class="card-title">Donation {{donation.donationId}}</h5>
+                <h6 class="card-subtitle">{{ donation.dateReceived }}</h6>
+                <ul class="list-group-flush m-auto">
+                    <li class="list-group-item bg-secondary" *ngFor="let item of donation.itemsDonated">
+                        <!-- TODO: Change Bg for hover (active) -->
+                        {{ item.name }}
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+        <div class="d-block w-100" *ngIf="(i+1) % numCol == 0"></div>
+    </ng-container>
 </div>
