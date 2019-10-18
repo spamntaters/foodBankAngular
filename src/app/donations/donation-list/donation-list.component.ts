@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Donation } from '../../models/donation.model'
 import { DonationsService } from '../donations.service';
 import { Observable, Subscription } from 'rxjs';
+// import styles from 'donation-list.scss';
 
 @Component({
   selector: 'app-donation-list',
@@ -12,7 +13,7 @@ export class DonationListComponent implements OnInit {
   donations: Observable<Donation[]>;
   selectorSub: Subscription;
   filters: boolean = false;
-  numCol: Number = 3;
+  numCol: Number = 2;
 
   constructor(private donationsService: DonationsService) { }
 

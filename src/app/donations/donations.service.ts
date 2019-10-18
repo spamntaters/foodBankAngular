@@ -12,7 +12,7 @@ export class DonationsService {
   selectedDonation = new BehaviorSubject<Donation>(null);
   constructor(private http: HttpClient) { }
 
-  apiURL = 'http://localhost:8080';
+  apiURL = ' https://jamil-niner-foodpantry-api.herokuapp.com/';
 
   selectDonation(donation: Donation){
     this.selectedDonation.next(donation);
@@ -27,5 +27,17 @@ export class DonationsService {
   
   getDonation(id: Number){
     return this.http.get(`${this.apiURL}/donations?donationId=${id}`);
+  }
+
+  getDonationsByDate(fromDate: Date, toDate: Date){
+    return this.http.get(`${this.apiURL}/donations?fromDate=${fromDate.toDateString()}&toDate=${toDate.toDateString()}`);
+  }
+
+  getDonationsByWeight(minWeight: Number, maxWeight: Number){
+    return this.http.get(`${this.apiURL}/donations?minWeight=${minWeight}&maxWeight=${maxWeight}`);
+  }
+
+  getDonationsByDonor(donorName: String){
+    return this.http.get(`${this.apiURL}/donations?donorName=${donorName}`);
   }
 }
