@@ -10,6 +10,11 @@ button.btn {
     margin-bottom: 2rem;
 }
 
+form{
+    width: 80%;
+    margin: auto;
+}
+
 @mixin numCol($prop) {
     numCol: 1;
     @media (min-width: 768px){

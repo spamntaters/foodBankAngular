@@ -12,7 +12,7 @@
 <div class="text-center mb-1" *ngIf="filters">
     <form [formGroup]="queryForm">
         Value: {{ queryForm.value | json}}
-        <select formControlName="queryType" class="form-control mb-3">
+        <select formControlName="queryType" class="form-control mb-3" id="queryType">
             <option [ngValue]="null" selected>Select query type...</option>
             <option value="date">Date</option>
             <option value="weight">Weight</option>
