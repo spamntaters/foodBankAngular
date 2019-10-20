@@ -13,6 +13,7 @@ import { DonationsComponent } from './donations/donations.component';
 import { DonationDetailComponent } from './donations/donation-detail/donation-detail.component';
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateDonationComponent } from './donations/create-donation/create-donation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DonationListComponent,
     InventoryListComponent,
     DonationsComponent,
-    DonationDetailComponent
+    DonationDetailComponent,
+    CreateDonationComponent
   ],
   imports: [
     BrowserModule,
