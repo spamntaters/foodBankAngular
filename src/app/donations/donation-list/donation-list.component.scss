@@ -5,3 +5,22 @@ ul.list-group-flush {
 button.btn {
     margin-bottom: 1rem;
 }
+
+.card {
+    margin-bottom: 2rem;
+}
+
+@mixin numCol($prop) {
+    numCol: 1;
+    @media (min-width: 768px){
+        numCol: 2;
+    }
+
+    @media (min-width: 1200px){
+        numCol: 3;
+    }
+}
+
+// :export {
+//     numCol: numCol(numCol);
+// }
