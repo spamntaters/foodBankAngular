@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { getLocaleTimeFormat } from '@angular/common';
+import { Donation } from '../donation.model'
+import { DonationsService } from '../donations.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-donation',
@@ -10,35 +12,43 @@ import { getLocaleTimeFormat } from '@angular/common';
 export class CreateDonationComponent implements OnInit {
 
   donationForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb : FormBuilder, private donationsService : DonationsService, private router : Router) { }
 
   ngOnInit() {
     this.donationForm = this.fb.group({
-      name: '',
-      email: '',
-      address: '',
-      date: '',
-      weight: null,
-      items: this.fb.array([])
+      donorName: '',
+      donorEmail: '',
+      donorAddress: '',
+      dateReceived: '',
+      donationWeight: null,
+      itemsDonated: this.fb.array([])
     });
 
   }
 
-  get items() {
-    return this.donationForm.get('items') as FormArray;
+  get itemsDonated() {
+    return this.donationForm.get('itemsDonated') as FormArray;
   }
 
   addItem(){
     const item = this.fb.group({
       name: '',
       description: '',
-      count: null
+      itemCount: null
     });
 
-    this.items.push(item);
+    this.itemsDonated.push(item);
   }
 
   deleteItem(i: number) {
-    this.items.removeAt(i);
+    this.itemsDonated.removeAt(i);
+  }
+
+  submitDonation(){
+    let donation = this.donationForm.value as Donation;
+    console.log(donation);
+    this.donationsService.addDonation(donation);
+    this.router.navigateByUrl('/donations');
+
   }
 }

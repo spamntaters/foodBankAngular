@@ -2,7 +2,7 @@ import { Item } from './item.model';
 
 export class Donation {
     donationId: Number;
-    dateReceived: String;
+    dateRecieved: String;
     itemsDonated: Item[];
     donorName: String;
     donorEmail: String;

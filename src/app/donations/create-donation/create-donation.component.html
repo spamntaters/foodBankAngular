@@ -1,34 +1,34 @@
-<form>
+<form [formGroup]="donationForm">
     <div class="form-row">
         <div class="form-group col-lg-4">
             <label>Donor Name</label>
-            <input type="text" [formControlName]="name" class="form-control">
+            <input type="text" formControlName="donorName" class="form-control">
         </div>
         <div class="form-group col-lg-4">
             <label>Donor Email</label>
-            <input type="email" [formControlName]="email" class="form-control">
+            <input type="email" formControlName="donorEmail" class="form-control">
         </div>
         <div class="form-group col-lg-4">
             <label>Donor Address</label>
-            <input type="text" [formControlName]="adddress" class="form-control">
+            <input type="text" formControlName="donorAddress" class="form-control">
         </div>
     </div>
     <div class="form-row" id="donInfoRow">
         <div class="form-group col-lg-6">
             <label>Date Recieved</label>
-            <input type="date" [formControlName]="date" class="form-control">           
+            <input type="date" formControlName="dateReceived" class="form-control">           
         </div>
         <div class="form-group col-lg-6">
                 <label>Weight</label>
-                <input type="number" [formControlName]="weight" class="form-control">           
+                <input type="number" formControlName="donationWeight" class="form-control">           
         </div>
     
 
     </div>
 
-    <div formArrayName="items">
+    <div formArrayName="itemsDonated">
         <h3>Items:</h3>
-        <div class="form-row" *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+        <div class="form-row" *ngFor="let item of itemsDonated.controls; let i = index" [formGroupName]="i">
             <div class="form-group col-lg-2">
                 <label>Name</label>
                 <input type="text" formControlName="name" class="form-control">
@@ -39,10 +39,13 @@
             </div>
             <div class="form-group col-lg-2">
                 <label>Quantity</label>
-                <input type="number" formControlName="count" class="form-control">             
+                <input type="number" formControlName="itemCount" class="form-control">             
             </div>
             <button class="btn btn-warning" (click)="deleteItem(i)">Remove</button>
         </div>
     </div>
     <button class="btn btn-primary" (click)="addItem()">Add Item</button>
+    <button class="btn btn-primary" (click)="submitDonation()">Submit Donation</button>
 </form>
+
+{{ donationForm.value | json }}
