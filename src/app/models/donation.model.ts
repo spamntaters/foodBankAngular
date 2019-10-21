@@ -1,8 +1,8 @@
 import { Item } from './item.model';
 
-export class Donation {
-    donationId: Number;
-    dateRecieved: String;
+export interface Donation {
+    donationId?: Number;
+    dateReceived: String;
     itemsDonated: Item[];
     donorName: String;
     donorEmail: String;

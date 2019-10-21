@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Donation } from '../donation.model'
 import { DonationsService } from '../donations.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-donation',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class CreateDonationComponent implements OnInit {
 
   donationForm: FormGroup;
+  donationSub: Subscription;
   constructor(private fb : FormBuilder, private donationsService : DonationsService, private router : Router) { }
 
   ngOnInit() {
@@ -25,6 +27,11 @@ export class CreateDonationComponent implements OnInit {
     });
 
   }
+
+  // ngOnDestroy(){
+  //   if(this.donationSub)
+  //     this.donationSub.unsubscribe();
+  // }
 
   get itemsDonated() {
     return this.donationForm.get('itemsDonated') as FormArray;
@@ -47,8 +54,10 @@ export class CreateDonationComponent implements OnInit {
   submitDonation(){
     let donation = this.donationForm.value as Donation;
     console.log(donation);
-    this.donationsService.addDonation(donation);
-    this.router.navigateByUrl('/donations');
+    this.donationSub = this.donationsService.addDonation(donation)
+    .subscribe(data => {
+      this.router.navigateByUrl('/donations');
+    });
 
   }
 }
