@@ -1,25 +1,23 @@
 <h1 class="jumbotron text-center bg-secondary">Inventory List</h1>
 
-<div class="text-center">
+<div class="text-center mb-4">
     <form>
-        <input type="text" [(ngModel)]="nameQueryTerm" name="queryString">
-        <button type="submit" (click)="queryByName($event)">Submit</button>
+        <input color="form-control"type="text" [(ngModel)]="nameQueryTerm" name="queryString">
+        <button class="btn btn-warning ml-3" type="submit" (click)="queryByName($event)">Submit</button>
     </form>
 </div>
 
-<table class="table">
-    <thead class="thead-dark">
+<table class="table table-striped table-bordered">
+    <thead class="bg-secondary">
         <tr>
             <th scope="col">Item Name</th>
             <th scope="col">Item Quantity</th>
         </tr>
     </thead>
     <tbody>
-        <th>
-            <tr *ngFor="let inventory of inventorys">{{inventory.foodItemName}}</tr>
-        </th>
-        <th>
-            <tr *ngFor="let inventory of inventorys">{{inventory.foodItemQuantity}}</tr>
-        </th>
+        <tr *ngFor="let inventory of inventorys"> 
+            <td>{{inventory.foodItemName}}</td>
+            <td>{{inventory.foodItemQuantity}}</td>
+        </tr>
     </tbody>
 </table>
