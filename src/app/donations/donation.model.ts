@@ -1,7 +1,11 @@
 import { Item } from '../models/item.model';
 
-export class Donation {
-    dateRecieved : String;
+export interface Donation {
+    dateReceived : String;
     itemsDonated : Item[];
-    donationId : Number;
+    donationId? : Number;
+    donorName: String;
+    donorEmail: String;
+    donorAddress: String;
+    donationWeight: Number;
 }
