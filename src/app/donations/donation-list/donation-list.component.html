@@ -59,8 +59,8 @@
             <button class="btn btn-warning" *ngIf="queryForm.get('queryType').value" (click)="processQuery()">Search</button>
     </form>
 </div>
-<div class="card-deck">
-    <ng-container *ngFor="let donation of donations | async; let i = index">
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-4" *ngFor="let donation of donations | async; let i = index">
         <div class="card text-center bg-secondary" (click)="onSelected(donation.donationId)">
             <div class="card-body">
                 <!-- TODO: Make link to donation-detail -->
@@ -74,6 +74,6 @@
                 </ul>
             </div>
         </div>
-        <div class="d-block w-100" *ngIf="(i+1) % numCol == 0"></div>
-    </ng-container>
+        <!-- <div class="d-block w-100" *ngIf="(i+1) % numCol == 0"></div> -->
+    </div>
 </div>
