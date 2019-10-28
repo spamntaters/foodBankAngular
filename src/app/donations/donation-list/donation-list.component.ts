@@ -14,7 +14,6 @@ export class DonationListComponent implements OnInit {
   donations: Observable<Donation[]>;
   selectorSub: Subscription;
   filters: boolean = false;
-  numCol: number = 2;
   queryForm: FormGroup;
 
   constructor(private donationsService: DonationsService, private fb: FormBuilder) { }
