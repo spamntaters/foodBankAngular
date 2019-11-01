@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Donation } from "../models/donation.model";
+import { trimTrailingNulls } from "@angular/compiler/src/render3/view/util";
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +11,8 @@ export class DonationsService {
   selectedDonation = new BehaviorSubject<Donation>(null);
   constructor(private http: HttpClient) {}
 
-  apiURL = "https://jamil-niner-foodpantry-api.herokuapp.com";
+  // apiURL = "https://jamil-niner-foodpantry-api.herokuapp.com";
+  apiURL = "http://localhost:8080"
 
   selectDonation(donation: Donation) {
     this.selectedDonation.next(donation);
@@ -47,6 +49,12 @@ export class DonationsService {
     return this.http.post(`${this.apiURL}/donations`, donation);
   }
   addTransaction(transaction) {
-    return this.http.delete(`${this.apiURL}/inventory`, transaction);
+    const options = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      }),
+      body: transaction
+    };
+    return this.http.delete(`${this.apiURL}/inventory`, options);
   }
 }

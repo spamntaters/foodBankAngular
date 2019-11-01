@@ -41,9 +41,10 @@ export class TransactionFormComponent implements OnInit {
 
   submitTransaction() {
     let transaction = this.transactionForm.value;
+    console.log("Transaction:");
     console.log(transaction);
-    this.donationsService.addTransaction(transaction).subscribe((data) => {
-      this.router.navigateByUrl("/");
-    });
+    this.donationsService.addTransaction(transaction).subscribe();
+    console.log("rerouting");
+    this.router.navigateByUrl("/");
   }
 }
