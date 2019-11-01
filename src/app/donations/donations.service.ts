@@ -11,8 +11,7 @@ export class DonationsService {
   selectedDonation = new BehaviorSubject<Donation>(null);
   constructor(private http: HttpClient) {}
 
-  // apiURL = "https://jamil-niner-foodpantry-api.herokuapp.com";
-  apiURL = "http://localhost:8080"
+  apiURL = "https://jamil-niner-foodpantry-api.herokuapp.com";
 
   selectDonation(donation: Donation) {
     this.selectedDonation.next(donation);
