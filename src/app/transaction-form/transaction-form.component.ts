@@ -21,17 +21,17 @@ export class TransactionFormComponent implements OnInit {
     this.transactionForm = this.fb.group({
       inventoryItemList: this.fb.array([])
     });
+    this.addItem();
   }
 
   get inventoryItemList() {
     return this.transactionForm.get("inventoryItemList") as FormArray;
   }
   addItem() {
-    const item = this.fb.group({
+    const item: FormGroup = this.fb.group({
       foodItemName: "",
       foodItemQuantity: null
     });
-
     this.inventoryItemList.push(item);
   }
 
