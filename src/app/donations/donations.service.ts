@@ -54,6 +54,6 @@ export class DonationsService {
       }),
       body: transaction
     };
-    return this.http.delete(`${this.apiURL}/inventory`, options);
+    return this.http.post(`${this.apiURL}/inventory`, transaction);
   }
 }
