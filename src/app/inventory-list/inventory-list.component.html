@@ -2,8 +2,8 @@
 
 <div class="text-center mb-4">
     <form>
-        <input color="form-control"type="text" [(ngModel)]="nameQueryTerm" name="queryString">
-        <button class="btn btn-warning ml-3" type="submit" (click)="queryByName($event)">Submit</button>
+        <input color="form-control"type="text"  name="queryString" (input)="fuzzySearch($event)">
+        <!-- [(ngModel)]="nameQueryTerm" -->
     </form>
 </div>
 
