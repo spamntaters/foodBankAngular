@@ -1,6 +1,6 @@
 export class InventoryItem {
     id: Number;
-    foodItemName: String;
+    foodItemName: string;
     foodItemQuantity: Number;
     
 }
