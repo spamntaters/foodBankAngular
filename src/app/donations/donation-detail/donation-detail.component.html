@@ -1,0 +1,22 @@
+<h1 class="jumbotron text-center bg-secondary">Donation {{ donation.donationId }}</h1>
+<div class="text-center">
+    <h2>Date Recieved: {{ donation.dateReceived }}</h2>
+    <h2>Donation Weight: {{ donation.donationWeight }} lbs</h2>
+</div>
+<hr>
+<div class="row text-center">
+    <div class="col-lg-6">
+        <h2>Donor: {{ donation.donorName }}</h2>
+        <ul>
+            <li>Email: {{ donation.donorEmail }}</li>
+            <li>Address: {{ donation.donorAddress }}</li>
+        </ul>
+    </div>
+    <div class="col-lg-6">
+        <h2>Items Donated:</h2>
+        <ul>
+            <li *ngFor="let item of donation.itemsDonated">{{item.name}}: {{item.itemCount}}</li>
+        </ul>
+    </div>
+</div>
+

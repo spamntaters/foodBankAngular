@@ -1,6 +1,7 @@
-export class Item {
+export interface Item {
     name: String;
-    itemId: Number;
+    itemId?: Number;
     description: String;
-    perishable: Boolean;
+    perishable?: Boolean;
+    itemCount: Number;
 }

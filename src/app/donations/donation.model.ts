@@ -1,9 +1,9 @@
-import { Item } from './item.model';
+import { Item } from '../models/item.model';
 
 export interface Donation {
-    donationId?: Number;
-    dateReceived: String;
-    itemsDonated: Item[];
+    dateReceived : String;
+    itemsDonated : Item[];
+    donationId? : Number;
     donorName: String;
     donorEmail: String;
     donorAddress: String;

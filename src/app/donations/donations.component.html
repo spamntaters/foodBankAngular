@@ -1,0 +1,12 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <app-donation-list></app-donation-list>
+        </div>
+        <div class="col-md-6">
+            <!-- TODO: Add Donation-detail component -->
+            <app-donation-detail class="sticky-top" *ngIf="selectedDonation" [donation]="selectedDonation"></app-donation-detail>
+        </div>
+    </div>
+</div>

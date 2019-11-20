@@ -5,20 +5,35 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DonationListComponent } from './donation-list/donation-list.component';
-import { DonationsService } from './donations.service';
+import { InventoryListComponent } from './inventory-list/inventory-list.component';
+import { InventoryListService } from './inventory-list.service';
+import { DonationListComponent } from './donations/donation-list/donation-list.component';
+import { DonationsService } from './donations/donations.service';
+import { DonationsComponent } from './donations/donations.component';
+import { DonationDetailComponent } from './donations/donation-detail/donation-detail.component';
+import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateDonationComponent } from './donations/create-donation/create-donation.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DonationListComponent
+    DonationListComponent,
+    InventoryListComponent,
+    DonationsComponent,
+    DonationDetailComponent,
+    CreateDonationComponent,
+    TransactionFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [DonationsService],
+  providers: [DonationsService, InventoryListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
