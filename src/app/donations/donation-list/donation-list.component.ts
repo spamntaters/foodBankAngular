@@ -4,6 +4,8 @@ import { DonationsService } from '../donations.service';
 import { Observable, Subscription } from 'rxjs';
 import { FormBuilder, Validators, FormGroup, FormControl } from "@angular/forms";
 // import styles from 'donation-list.scss';
+import { saveAs } from "file-saver"
+
 
 @Component({
   selector: 'app-donation-list',
@@ -68,9 +70,29 @@ export class DonationListComponent implements OnInit {
     this.donations = res;
   }
 
-  exportData() {
-    // TODO Write a request in the service that sends that object that holding all donation to /csv
+  exportDataAsCsv = () => {
+    let fullItemList = []
+    this.donations.subscribe((donations: Donation[]) => {
+      donations.forEach((donation) => {
+        donation.itemsDonated.forEach(item => fullItemList.push(item))
+        delete donation.itemsDonated;
+      })
 
+      this.writeCSV(donations, "donations")
+      this.writeCSV(fullItemList, "items")
+      
+    })
+  }
+
+  writeCSV = (data : Object[], fileName: string) => {
+    const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
+    const header = Object.keys(data[0]);
+    let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    let csvArray = csv.join('\r\n');
+
+    var blob = new Blob([csvArray], {type: 'text/csv' })
+    saveAs(blob, `${fileName}.csv`);
   }
 
 }

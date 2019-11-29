@@ -47,6 +47,7 @@ export class DonationsService {
   addDonation(donation: Donation) {
     return this.http.post(`${this.apiURL}/donations`, donation);
   }
+
   addTransaction(transaction) {
     const options = {
       headers: new HttpHeaders({
@@ -56,4 +57,5 @@ export class DonationsService {
     };
     return this.http.post(`${this.apiURL}/inventory`, transaction);
   }
+
 }
