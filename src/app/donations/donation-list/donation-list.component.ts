@@ -34,27 +34,27 @@ export class DonationListComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if(this.selectorSub){
+    if (this.selectorSub) {
       this.selectorSub.unsubscribe();
     }
   }
 
-  onSelected(id: Number){
+  onSelected(id: Number) {
     this.selectorSub = this.donationsService.getDonation(id)
-    .subscribe((data: Donation) => {
-      this.donationsService.selectDonation(data);
-    });
+      .subscribe((data: Donation) => {
+        this.donationsService.selectDonation(data);
+      });
   }
 
-  toggleFilters(){
+  toggleFilters() {
     console.log(this.queryForm.get("queryType").value)
     this.filters = !this.filters;
   }
 
-  processQuery(){
+  processQuery() {
     let queryType: String = this.queryForm.get('queryType').value;
     let res: Observable<Donation[]>;
-    switch(queryType){
+    switch (queryType) {
       case 'date':
         res = this.donationsService.getDonationsByDate(this.queryForm.get('fromDate').value, this.queryForm.get('toDate').value) as Observable<Donation[]>;
         break;
@@ -66,6 +66,11 @@ export class DonationListComponent implements OnInit {
         break;
     }
     this.donations = res;
+  }
+
+  exportData() {
+    // TODO Write a request in the service that sends that object that holding all donation to /csv
+
   }
 
 }
