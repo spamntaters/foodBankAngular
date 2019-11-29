@@ -4,6 +4,8 @@ import { DonationsService } from '../donations.service';
 import { Observable, Subscription } from 'rxjs';
 import { FormBuilder, Validators, FormGroup, FormControl } from "@angular/forms";
 // import styles from 'donation-list.scss';
+import { saveAs } from "file-saver"
+
 
 @Component({
   selector: 'app-donation-list',
@@ -34,27 +36,27 @@ export class DonationListComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if(this.selectorSub){
+    if (this.selectorSub) {
       this.selectorSub.unsubscribe();
     }
   }
 
-  onSelected(id: Number){
+  onSelected(id: Number) {
     this.selectorSub = this.donationsService.getDonation(id)
-    .subscribe((data: Donation) => {
-      this.donationsService.selectDonation(data);
-    });
+      .subscribe((data: Donation) => {
+        this.donationsService.selectDonation(data);
+      });
   }
 
-  toggleFilters(){
+  toggleFilters() {
     console.log(this.queryForm.get("queryType").value)
     this.filters = !this.filters;
   }
 
-  processQuery(){
+  processQuery() {
     let queryType: String = this.queryForm.get('queryType').value;
     let res: Observable<Donation[]>;
-    switch(queryType){
+    switch (queryType) {
       case 'date':
         res = this.donationsService.getDonationsByDate(this.queryForm.get('fromDate').value, this.queryForm.get('toDate').value) as Observable<Donation[]>;
         break;
@@ -66,6 +68,31 @@ export class DonationListComponent implements OnInit {
         break;
     }
     this.donations = res;
+  }
+
+  exportDataAsCsv = () => {
+    let fullItemList = []
+    this.donations.subscribe((donations: Donation[]) => {
+      donations.forEach((donation) => {
+        donation.itemsDonated.forEach(item => fullItemList.push(item))
+        delete donation.itemsDonated;
+      })
+
+      this.writeCSV(donations, "donations")
+      this.writeCSV(fullItemList, "items")
+      
+    })
+  }
+
+  writeCSV = (data : Object[], fileName: string) => {
+    const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
+    const header = Object.keys(data[0]);
+    let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    let csvArray = csv.join('\r\n');
+
+    var blob = new Blob([csvArray], {type: 'text/csv' })
+    saveAs(blob, `${fileName}.csv`);
   }
 
 }

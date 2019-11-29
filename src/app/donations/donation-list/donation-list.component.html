@@ -1,11 +1,14 @@
 <h1 class="jumbotron text-center bg-secondary">Donations</h1>
 <div class="container">
     <div class="row text-center">
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             <button class="btn btn-warning text-dark" routerLink="/donations/new">Add a donation</button>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-2">
             <button class="btn btn-warning text-dark" (click)="toggleFilters()">Filters</button>
+        </div>
+        <div class="col-sm-5">
+            <button class="btn btn-warning text-dark" (click)="exportDataAsCsv()">Export to CSV</button>
         </div>
     </div>
 </div>
@@ -23,40 +26,41 @@
                 <label>From Date:</label>
             </div>
             <div class="col-lg-3">
-                    <input type="date" class="form-control" formControlName="fromDate">
+                <input type="date" class="form-control" formControlName="fromDate">
             </div>
             <div class="col-lg-3">
                 <label>To Date:</label>
             </div>
             <div class="col-lg-3">
-                    <input type="date" class="form-control" formControlName="toDate">
+                <input type="date" class="form-control" formControlName="toDate">
             </div>
         </div>
 
         <div *ngIf="queryForm.get('queryType').value == 'weight'" class="row mb-3">
-                <div class="col-lg-3">
-                    <label>Min Weight:</label>
-                </div>
-                <div class="col-lg-3">
-                        <input type="number" class="form-control" formControlName="minWeight">
-                </div>
-                <div class="col-lg-3">
-                    <label>Max Weight:</label>
-                </div>
-                <div class="col-lg-3">
-                        <input type="number" class="form-control" formControlName="maxWeight">
-                </div>
+            <div class="col-lg-3">
+                <label>Min Weight:</label>
             </div>
+            <div class="col-lg-3">
+                <input type="number" class="form-control" formControlName="minWeight">
+            </div>
+            <div class="col-lg-3">
+                <label>Max Weight:</label>
+            </div>
+            <div class="col-lg-3">
+                <input type="number" class="form-control" formControlName="maxWeight">
+            </div>
+        </div>
 
-            <div *ngIf="queryForm.get('queryType').value == 'donor'" class="row mb-3">
-                <div class="col-md-6">
-                    <label>Donor Name:</label>
-                </div>
-                <div class="col-md-6">
-                        <input type="text" class="form-control" formControlName="donorName">
-                </div>
+        <div *ngIf="queryForm.get('queryType').value == 'donor'" class="row mb-3">
+            <div class="col-md-6">
+                <label>Donor Name:</label>
             </div>
-            <button class="btn btn-warning" *ngIf="queryForm.get('queryType').value" (click)="processQuery()">Search</button>
+            <div class="col-md-6">
+                <input type="text" class="form-control" formControlName="donorName">
+            </div>
+        </div>
+        <button class="btn btn-warning" *ngIf="queryForm.get('queryType').value"
+            (click)="processQuery()">Search</button>
     </form>
 </div>
 <div class="row">
