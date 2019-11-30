@@ -12,6 +12,7 @@ export class DonationsService {
   constructor(private http: HttpClient) {}
 
   apiURL = "https://jamil-niner-foodpantry-api.herokuapp.com";
+  rootUrlForAuth = "jamil-niner-foodpantry-api.herokuapp.com"
 
   selectDonation(donation: Donation) {
     this.selectedDonation.next(donation);
@@ -45,17 +46,27 @@ export class DonationsService {
   }
 
   addDonation(donation: Donation) {
-    return this.http.post(`${this.apiURL}/donations`, donation);
+    let username : string = window.prompt("Enter the pantry admin username!")
+    let password : string = window.prompt("Enter the pantry admin password!")
+    let creds64 : string = btoa(`${username}:${password}`)
+    const options = {
+      headers: new HttpHeaders({
+        "Authorization": `Basic ${creds64}`
+      })
+    }
+    return this.http.post(`${this.apiURL}/donations`, donation, options);
   }
 
   addTransaction(transaction) {
+    let username : string = window.prompt("Enter the pantry admin username!")
+    let password : string = window.prompt("Enter the pantry admin password!")
+    let creds64 : string = btoa(`${username}:${password}`)
     const options = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      }),
-      body: transaction
-    };
-    return this.http.post(`${this.apiURL}/inventory`, transaction);
+        "Authorization": `Basic ${creds64}`
+      })
+    }
+    return this.http.post(`${this.apiURL}/inventory`, transaction, options);
   }
 
 }
