@@ -19,7 +19,15 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
-            "assets": ["src/favicon.ico", "src/assets", "src/_redirects"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              }
+            ],
             "styles": ["src/styles.scss"],
             "scripts": [
               "node_modules/jquery/dist/jquery.slim.min.js",
