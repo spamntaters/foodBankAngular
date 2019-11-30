@@ -89,6 +89,12 @@ export class DonationListComponent implements OnInit {
           this.queryForm.get("donor").get("donorName").value
         ) as Observable<Donation[]>;
         break;
+      case "date+donor":
+        res = this.donationsService.getDonationsByDateAndDonor(
+          this.queryForm.get("donor").get("donorName").value,
+          this.queryForm.get("date").get("fromDate").value,
+          this.queryForm.get("date").get("toDate").value
+        ) as Observable<Donation[]>;
     }
     this.donations = res;
   }

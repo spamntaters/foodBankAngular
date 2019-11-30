@@ -30,9 +30,13 @@
       <option value="date">Date</option>
       <option value="weight">Weight</option>
       <option value="donor">Donor Name</option>
+      <option value="date+donor">Donor Name and Date</option>
     </select>
     <div
-      *ngIf="queryForm.get('queryType').value == 'date'"
+      *ngIf="
+        queryForm.get('queryType').value == 'date' ||
+        queryForm.get('queryType').value == 'date+donor'
+      "
       class="row mb-3"
       formGroupName="date"
     >
@@ -70,7 +74,10 @@
     </div>
 
     <div
-      *ngIf="queryForm.get('queryType').value == 'donor'"
+      *ngIf="
+        queryForm.get('queryType').value == 'donor' ||
+        queryForm.get('queryType').value == 'date+donor'
+      "
       class="row mb-3"
       formGroupName="donor"
     >

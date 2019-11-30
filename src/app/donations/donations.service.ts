@@ -44,6 +44,16 @@ export class DonationsService {
     return this.http.get(`${this.apiURL}/donations?donorName=${donorName}`);
   }
 
+  getDonationsByDateAndDonor(
+    donorName: String,
+    fromDate: String,
+    toDate: String
+  ) {
+    return this.http.get(
+      `${this.apiURL}/donations?fromDate=${fromDate}&toDate=${toDate}&donorName=${donorName}`
+    );
+  }
+
   addDonation(donation: Donation) {
     return this.http.post(`${this.apiURL}/donations`, donation);
   }
@@ -57,5 +67,4 @@ export class DonationsService {
     };
     return this.http.post(`${this.apiURL}/inventory`, transaction);
   }
-
 }
