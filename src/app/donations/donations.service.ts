@@ -12,7 +12,6 @@ export class DonationsService {
   constructor(private http: HttpClient) {}
 
   apiURL = "https://jamil-niner-foodpantry-api.herokuapp.com";
-  rootUrlForAuth = "jamil-niner-foodpantry-api.herokuapp.com"
 
   selectDonation(donation: Donation) {
     this.selectedDonation.next(donation);
