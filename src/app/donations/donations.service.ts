@@ -45,10 +45,7 @@ export class DonationsService {
     return this.http.get(`${this.apiURL}/donations?donorName=${donorName}`);
   }
 
-  addDonation(donation: Donation) {
-    let username : string = window.prompt("Enter the pantry admin username!")
-    let password : string = window.prompt("Enter the pantry admin password!")
-    let creds64 : string = btoa(`${username}:${password}`)
+  addDonation(donation: Donation, creds64: string) {
     const options = {
       headers: new HttpHeaders({
         "Authorization": `Basic ${creds64}`
@@ -57,10 +54,7 @@ export class DonationsService {
     return this.http.post(`${this.apiURL}/donations`, donation, options);
   }
 
-  addTransaction(transaction) {
-    let username : string = window.prompt("Enter the pantry admin username!")
-    let password : string = window.prompt("Enter the pantry admin password!")
-    let creds64 : string = btoa(`${username}:${password}`)
+  addTransaction(transaction, creds64: string) {
     const options = {
       headers: new HttpHeaders({
         "Authorization": `Basic ${creds64}`

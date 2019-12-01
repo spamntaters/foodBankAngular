@@ -13,6 +13,8 @@ import { Subscription } from "rxjs";
 export class CreateDonationComponent implements OnInit {
   donationForm: FormGroup;
   donationSub: Subscription;
+  username: string;
+  password: string;
   constructor(
     private fb: FormBuilder,
     private donationsService: DonationsService,
@@ -54,10 +56,11 @@ export class CreateDonationComponent implements OnInit {
   }
 
   submitDonation() {
+    let creds64 : string = btoa(`${this.username}:${this.password}`)
     let donation = this.donationForm.value as Donation;
     console.log(donation);
     this.donationSub = this.donationsService
-      .addDonation(donation)
+      .addDonation(donation, creds64)
       .subscribe((data) => {
         this.router.navigateByUrl("/donations");
       });
