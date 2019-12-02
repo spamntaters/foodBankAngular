@@ -30,18 +30,18 @@ export class DonationListComponent implements OnInit {
   ngOnInit() {
     this.donations = this.donationsService.getAllDonations();
     const dateQuery = this.fb.group({
-      fromDate: null,
-      toDate: null
+      fromDate: new FormControl(null, Validators.required),
+      toDate: new FormControl(null, Validators.required)
     });
     const weightQuery = this.fb.group({
-      minWeight: null,
-      maxWeight: null
+      minWeight: new FormControl(null, Validators.required),
+      maxWeight: new FormControl(null, Validators.required)
     });
     const donorQuery = this.fb.group({
-      donorName: ""
+      donorName: new FormControl("", Validators.required)
     });
     const donationID = this.fb.group({
-      donationID: null
+      donationID: new FormControl(null, Validators.required)
     });
 
     this.queryForm = this.fb.group({
@@ -77,23 +77,38 @@ export class DonationListComponent implements OnInit {
     let res: Observable<Donation[]>;
     switch (queryType) {
       case "date":
+        if (this.queryForm.get("date").invalid) {
+          return;
+        }
         res = this.donationsService.getDonationsByDate(
           this.queryForm.get("date").get("fromDate").value,
           this.queryForm.get("date").get("toDate").value
         ) as Observable<Donation[]>;
         break;
       case "weight":
+        if (this.queryForm.get("weight").invalid) {
+          return;
+        }
         res = this.donationsService.getDonationsByWeight(
           this.queryForm.get("weight").get("minWeight").value,
           this.queryForm.get("weight").get("maxWeight").value
         ) as Observable<Donation[]>;
         break;
       case "donor":
+        if (this.queryForm.get("donor").invalid) {
+          return;
+        }
         res = this.donationsService.getDonationsByDonor(
           this.queryForm.get("donor").get("donorName").value
         ) as Observable<Donation[]>;
         break;
       case "date+donor":
+        if (
+          this.queryForm.get("date").invalid ||
+          this.queryForm.get("donor").invalid
+        ) {
+          return;
+        }
         res = this.donationsService.getDonationsByDateAndDonor(
           this.queryForm.get("donor").get("donorName").value,
           this.queryForm.get("date").get("fromDate").value,
@@ -101,6 +116,9 @@ export class DonationListComponent implements OnInit {
         ) as Observable<Donation[]>;
         break;
       case "id":
+        if (this.queryForm.get("id").invalid) {
+          return;
+        }
         res = this.donationsService.getDonation(
           this.queryForm.get("id").get("donationID").value
         ) as Observable<Donation[]>;
