@@ -40,12 +40,16 @@ export class DonationListComponent implements OnInit {
     const donorQuery = this.fb.group({
       donorName: ""
     });
+    const donationID = this.fb.group({
+      donationID: null
+    });
 
     this.queryForm = this.fb.group({
       queryType: null,
       date: dateQuery,
       donor: donorQuery,
-      weight: weightQuery
+      weight: weightQuery,
+      id: donationID
     });
   }
 
@@ -58,8 +62,8 @@ export class DonationListComponent implements OnInit {
   onSelected(id: Number) {
     this.selectorSub = this.donationsService
       .getDonation(id)
-      .subscribe((data: Donation) => {
-        this.donationsService.selectDonation(data);
+      .subscribe((data: Donation[]) => {
+        this.donationsService.selectDonation(data[0]);
       });
   }
 
@@ -95,8 +99,14 @@ export class DonationListComponent implements OnInit {
           this.queryForm.get("date").get("fromDate").value,
           this.queryForm.get("date").get("toDate").value
         ) as Observable<Donation[]>;
+        break;
+      case "id":
+        res = this.donationsService.getDonation(
+          this.queryForm.get("id").get("donationID").value
+        ) as Observable<Donation[]>;
     }
     this.donations = res;
+    console.log(this.donations);
   }
 
   exportDataAsCsv = () => {
