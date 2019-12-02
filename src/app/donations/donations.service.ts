@@ -44,18 +44,22 @@ export class DonationsService {
     return this.http.get(`${this.apiURL}/donations?donorName=${donorName}`);
   }
 
-  addDonation(donation: Donation) {
-    return this.http.post(`${this.apiURL}/donations`, donation);
-  }
-
-  addTransaction(transaction) {
+  addDonation(donation: Donation, creds64: string) {
     const options = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      }),
-      body: transaction
-    };
-    return this.http.post(`${this.apiURL}/inventory`, transaction);
+        "Authorization": `Basic ${creds64}`
+      })
+    }
+    return this.http.post(`${this.apiURL}/donations`, donation, options);
+  }
+
+  addTransaction(transaction, creds64: string) {
+    const options = {
+      headers: new HttpHeaders({
+        "Authorization": `Basic ${creds64}`
+      })
+    }
+    return this.http.post(`${this.apiURL}/inventory`, transaction, options);
   }
 
 }

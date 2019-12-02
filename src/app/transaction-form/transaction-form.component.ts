@@ -10,6 +10,8 @@ import { Router } from "@angular/router";
 })
 export class TransactionFormComponent implements OnInit {
   transactionForm: FormGroup;
+  username: string;
+  password: string;
 
   constructor(
     private fb: FormBuilder,
@@ -40,10 +42,11 @@ export class TransactionFormComponent implements OnInit {
   }
 
   submitTransaction() {
+    let creds64 : string = btoa(`${this.username}:${this.password}`)
     let transaction = this.transactionForm.value;
     console.log("Transaction:");
     console.log(transaction);
-    this.donationsService.addTransaction(transaction).subscribe((data) => {
+    this.donationsService.addTransaction(transaction, creds64).subscribe((data) => {
       console.log("rerouting");
       this.router.navigateByUrl("/");
     });
