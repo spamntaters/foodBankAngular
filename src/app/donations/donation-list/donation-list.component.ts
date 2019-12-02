@@ -43,8 +43,8 @@ export class DonationListComponent implements OnInit {
 
   onSelected(id: Number) {
     this.selectorSub = this.donationsService.getDonation(id)
-      .subscribe((data: Donation) => {
-        this.donationsService.selectDonation(data);
+      .subscribe((data: Donation[]) => {
+        this.donationsService.selectDonation(data[0]);
       });
   }
 
