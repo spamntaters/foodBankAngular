@@ -111,17 +111,17 @@
 </div>
 <div class="row">
   <div
-    class="col-xs-12 col-md-6 col-lg-4"
+    class="col-xs-12 col-md-6 col-lg-4 py-2"
     *ngFor="let donation of donations | async; let i = index"
   >
     <div
-      class="card text-center bg-secondary"
+      class="card text-center bg-secondary h-100"
       (click)="onSelected(donation.donationId)"
     >
       <div class="card-body">
         <!-- TODO: Make link to donation-detail -->
         <h5 class="card-title">Donation {{ donation.donationId }}</h5>
-        <h6 class="card-subtitle">{{ donation.dateReceived }}</h6>
+        <h6 class="card-subtitle mb-3">{{ donation.dateReceived }}</h6>
         <ul class="list-group-flush m-auto">
           <li
             class="list-group-item bg-secondary"
