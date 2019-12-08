@@ -11,7 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class StatisticsComponent implements OnInit {
   dateForm: FormGroup;
   statsObj$: Observable<Object>;
-  constructor(private fb: FormBuilder, http: HttpClient) {}
+  rootUrl = "http://jamil-niner-foodpantry-api.herokuapp.com"
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit() {
     this.dateForm = this.fb.group({
@@ -23,8 +24,11 @@ export class StatisticsComponent implements OnInit {
     return this.dateForm.value;
   }
   fetchStats(){
-      //Make Call to backend passing formValue;
       // this.statsObj$ =  this.http.get("");
+      let fromDate = this.formValue.fromDate
+      let toDate = this.formValue.toDate
+      this.statsObj$ =  this.http.get(`${this.rootUrl}/statistics?fromDate=${fromDate}&toDate=${toDate}`);
+      this.statsObj$.subscribe(data => console.log(data))
   }
 
 
