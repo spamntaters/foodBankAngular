@@ -1,1 +1,20 @@
-<p>statistics works!</p>
+<h1 class="jumbotron text-center bg-secondary">Statistics</h1>
+<form [formGroup]="dateForm" class="row">
+    <div class="col-md-3 offset-md-2 text-center">
+        <label>From Date:</label>
+        <input type="text" formControlName="fromDate">
+    </div>
+    <div class="col-md-3 text-center">
+        <label>To Date:</label>
+        <input type="text" formControlName="toDate">
+    </div>
+    <div class="col-md-4 text-left">
+        <button class="btn btn-primary" (click)="fetchStats">Submit</button>
+    </div>
+
+    <!-- Stats here -->
+    <div *ngIf="(statsObj$ | async) as statsObj">
+    </div>
+    
+    
+</form>
