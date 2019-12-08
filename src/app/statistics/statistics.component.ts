@@ -24,11 +24,9 @@ export class StatisticsComponent implements OnInit {
     return this.dateForm.value;
   }
   fetchStats(){
-      // this.statsObj$ =  this.http.get("");
       let fromDate = this.formValue.fromDate
       let toDate = this.formValue.toDate
       this.statsObj$ =  this.http.get(`${this.rootUrl}/statistics?fromDate=${fromDate}&toDate=${toDate}`);
-      this.statsObj$.subscribe(data => console.log(data))
   }
 
 
