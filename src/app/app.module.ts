@@ -15,6 +15,7 @@ import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateDonationComponent } from './donations/create-donation/create-donation.component';
 import { TransactionFormComponent } from './transaction-form/transaction-form.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TransactionFormComponent } from './transaction-form/transaction-form.co
     DonationsComponent,
     DonationDetailComponent,
     CreateDonationComponent,
-    TransactionFormComponent
+    TransactionFormComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
