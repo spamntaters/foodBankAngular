@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class StatisticsComponent implements OnInit {
   dateForm: FormGroup;
   statsObj$: Observable<Object>;
-  rootUrl = "http://jamil-niner-foodpantry-api.herokuapp.com"
+  rootUrl = "https://jamil-niner-foodpantry-api.herokuapp.com"
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit() {
